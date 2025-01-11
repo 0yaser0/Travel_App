@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.travelapp.ui.theme.TravelAppTheme
-import com.example.travelapp.yaser.components.FlightDetailsComponents
+import com.example.travelapp.yaser.components.TicketCardComponents
 
 class FlightDetails : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class FlightDetails : ComponentActivity() {
 fun FlightDetailsScaffold() {
     Scaffold(
         content = { innerPadding ->
-            FlightDetailsComponents(
+            TicketCardComponents(
                 modifier = Modifier.padding(innerPadding).padding(15.dp)
             )
         }

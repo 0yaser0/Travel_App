@@ -32,10 +32,11 @@ val PoppinsMedium = FontFamily(
 )
 
 @Composable
-fun FlightDetailsComponents(modifier: Modifier) {
+fun TicketCardComponents(modifier: Modifier) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .width(360.dp)
+            .height(530.dp)
             .background(Color.Black)
     ) {
         Image(
@@ -50,6 +51,7 @@ fun FlightDetailsComponents(modifier: Modifier) {
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "20 December 2022",
                 style = TextStyle(
@@ -59,6 +61,7 @@ fun FlightDetailsComponents(modifier: Modifier) {
                 ),
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
+            Spacer(modifier = Modifier.height(10.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -322,7 +325,7 @@ fun FlightDetailsComponents(modifier: Modifier) {
                 }
             }
 
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(65.dp))
 
             Image(
                 painter = painterResource(id = R.drawable.line_down),
@@ -330,10 +333,12 @@ fun FlightDetailsComponents(modifier: Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(10.dp)
+                    .padding(horizontal = 16.dp)
                     .align(Alignment.CenterHorizontally)
             )
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(30.dp))
+
             Image(
                 painter = painterResource(id = R.drawable.bar_code),
                 contentDescription = "QR Code",
@@ -341,7 +346,9 @@ fun FlightDetailsComponents(modifier: Modifier) {
                     .fillMaxWidth()
                     .align(Alignment.CenterHorizontally)
             )
+
             Spacer(modifier = Modifier.height(15.dp))
+
             Text(
                 text = "1  2  5  8  4  6  2  4  2  7  5  3  1  3  5  0  6  7  5  9",
                 style = TextStyle(
@@ -358,6 +365,6 @@ fun FlightDetailsComponents(modifier: Modifier) {
 
 @Preview(backgroundColor = 0xFF000000, showBackground = true)
 @Composable
-fun FlightDetailsComponentsPreview() {
-    FlightDetailsComponents(modifier = Modifier)
+fun TicketCardComponentsPreview() {
+    TicketCardComponents(modifier = Modifier)
 }
