@@ -30,7 +30,7 @@ fun TravelAppScaffold() {
 
     Scaffold(
         topBar = { TravelAppBar() },
-        bottomBar = { TravelAppBottomBar(navController) },
+        bottomBar = { TravelAppBottomBar() },
         content = { innerPadding ->
             MainContent(modifier = Modifier.padding(innerPadding).fillMaxSize())
         }
