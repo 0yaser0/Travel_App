@@ -37,7 +37,7 @@ fun TicketCardComponents(modifier: Modifier) {
         modifier = Modifier
             .width(360.dp)
             .height(530.dp)
-            .background(Color.Black)
+            .background(Color.Transparent)
     ) {
         Image(
             painter = painterResource(id = R.drawable.subtract),
@@ -65,7 +65,7 @@ fun TicketCardComponents(modifier: Modifier) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 35.dp),
+                    .padding(horizontal = 30.dp),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -91,7 +91,9 @@ fun TicketCardComponents(modifier: Modifier) {
                 Image(
                     painter = painterResource(id = R.drawable.li_plane_line),
                     contentDescription = "Wrap Content Image",
-                    modifier = Modifier.wrapContentSize(),
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .padding(8.dp),
                     contentScale = ContentScale.Crop
                 )
                 Column {
