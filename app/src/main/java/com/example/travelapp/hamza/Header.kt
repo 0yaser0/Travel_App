@@ -1,197 +1,216 @@
 package com.example.travelapp.hamza
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.runtime.Composable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.travelapp.R
 
-fun message(context:Context,mess:String){
-    Toast.makeText(context,mess,Toast.LENGTH_SHORT).show()
+
+@Composable
+fun TopBar() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = {  }) {
+            Icon(
+                painter = painterResource(id=R.drawable.li_chevron_left),
+                contentDescription = "Back",
+                tint = Color.White
+            )
+        }
+
+        IconButton(onClick = { }) {
+            Icon(
+                painter = painterResource(id=R.drawable.li_edit),
+                contentDescription = "Edit",
+                tint = Color.White
+            )
+        }
+    }
 }
 
 @Composable
-fun TopBar(title: String = "") {
-    val context = LocalContext.current
-    Box (
-    ){
-        Image(
-            painter = painterResource(id = R.drawable.rectangle_18),
-            contentDescription = ""
+fun TicketContent() {
+    Column(
+        modifier = Modifier
+            .padding(18.dp)
+            .padding(horizontal = 12.dp, vertical = 33.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "20 December 2022",
+            color = Color.White,
+            fontSize = 16.sp
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(vertical = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-           Column (
-               verticalArrangement = Arrangement.Bottom
-           ){
-               Icon(
-                   painter = painterResource(id = R.drawable.li_chevron_left),
-                   contentDescription = "Back",
-                   modifier = Modifier
-                       .size(24.dp)
-                       .clickable {message(context,"hhh") }
-               )
-           }
+            Text(
+                text = "DEL",
+                color = Color.White,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
 
-            Column {
-                Icon(
-                    painter = painterResource(id = R.drawable.li_edit),
-                    contentDescription = "edit",
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable {message(context,"hhh") }
-                )
-            }
-            // end row
+            FlightIcon()
+
+            Text(
+                text = "BLR",
+                color = Color.White,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Row (
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Text(
+            "Bengaluru Airport India",
+            color = Color.White.copy(alpha = 0.7f),
+            fontSize = 10.sp
+            )
+
+            Text(
+                text = "04h 30m",
+                color = Color.White,
+                fontSize = 16.sp,
+                modifier = Modifier.padding(vertical = 8.dp)
+            )
+
+            Text(
+                text = "Delhi International Airport",
+                color = Color.White.copy(alpha = 0.7f),
+                fontSize = 10.sp
+            )
+        }
+
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Icon(
+                painter = painterResource(id=R.drawable.li_user),
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = "01 Adult",
+                color = Color.White,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(start = 4.dp)
+            )
         }
     }
 }
 
 @Composable
-fun DateDisplay(date: String) {
-    Text(
-        text = date,
-        modifier = Modifier
-            .fillMaxWidth(),
-        fontSize = 16.sp,
-        textAlign = TextAlign.Center
-    )
-}
-
-@Composable
-fun AirportInfo(source: String, destination: String, sourceDesc: String, destinationDesc: String) {
+fun FlightIcon() {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = source, fontSize = 36.sp)
-            Text(text = sourceDesc,fontSize = 8.sp)
-        }
-        Icon(
-            painter = painterResource(id = R.drawable.li_plane),
-            contentDescription = "Flight Icon",
-            modifier = Modifier.size(37.dp)
+        Box(
+            modifier = Modifier
+                .width(40.dp)
+                .height(2.dp)
+                .background(Color.White.copy(alpha = 0.5f))
         )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = destination,fontSize = 36.sp)
-            Text(text = destinationDesc,fontSize = 8.sp)
-        }
-    }
-}
-
-@Composable
-fun FlightDuration(duration: String) {
-    Text(
-        text = duration,
-        style = MaterialTheme.typography.bodySmall,
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center
-    )
-}
-
-@Composable
-fun PassengerCount(passengers: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ) {
         Icon(
-            imageVector = Icons.Default.Person,
-            contentDescription = "Person Icon",
-            modifier = Modifier.size(24.dp)
+            painter = painterResource(id= R.drawable.li_plane),
+            contentDescription = null,
+            tint = Color.White,
+            modifier = Modifier.padding(horizontal = 8.dp)
         )
-        Spacer(modifier = Modifier.width(8.dp))
-        Text(
-            text = passengers,
-            style = MaterialTheme.typography.bodySmall
+        Box(
+            modifier = Modifier
+                .width(40.dp)
+                .height(2.dp)
+                .background(Color.White.copy(alpha = 0.5f))
         )
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun BrandingSection(brandName: String) {
+fun FlightTicketScreen() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.rectangle_18),
+            contentDescription = "bg",
+            modifier = Modifier.fillMaxWidth()
+        )
+        TopBar()
+        TicketContent()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun IndiGoLogo() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = brandName,
-            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, fontSize = 30.sp),
-            color = MaterialTheme.colorScheme.primary
+        Image(
+            painter = painterResource(id = R.drawable.rectangle_18),
+            contentDescription = "bg",
+            modifier = Modifier.fillMaxWidth()
         )
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun FlightListingHeader() {
-    Column {
-        TopBar(title = "")
-        Spacer(modifier = Modifier.height(8.dp))
-        Spacer(modifier = Modifier.height(16.dp))
-        DateDisplay(date = "20 December 2022")
-        Spacer(modifier = Modifier.height(16.dp))
-        AirportInfo(
-            source = "DEL",
-            destination = "BLR",
-            sourceDesc = "Delhi International Airport",
-            destinationDesc = "Bengaluru Airport India"
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        FlightDuration(duration = "04h 30m")
-        Spacer(modifier = Modifier.height(16.dp))
-        PassengerCount(passengers = "01 Adult")
-    }
-}
+        Row (
+            modifier = Modifier
+                .padding(vertical = 10.dp)
+        ){
+            IconButton(onClick = {  }) {
+                Icon(
+                    painter = painterResource(id=R.drawable.li_chevron_left),
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun FlightDetails(){
-    Image(
-        painter = painterResource(id=R.drawable.indigo),
-        contentDescription = "",
-        modifier = Modifier.fillMaxSize()
-    )
+        Row (
+            modifier = Modifier
+                .padding(horizontal = 110.dp, vertical = 80.dp)
+        ){
+            Text(
+                text = "IndiGo",
+                color = Color.White,
+                fontSize = 52.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
 }
