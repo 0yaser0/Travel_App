@@ -3,8 +3,6 @@ package com.example.travelapp.hamza
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -161,10 +159,7 @@ fun FlightIcon() {
 @Preview(showBackground = true)
 @Composable
 fun FlightTicketScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    Box{
         Image(
             painter = painterResource(id = R.drawable.rectangle_18),
             contentDescription = "bg",
@@ -178,10 +173,7 @@ fun FlightTicketScreen() {
 @Preview(showBackground = true)
 @Composable
 fun IndiGoLogo() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
+    Box{
         Image(
             painter = painterResource(id = R.drawable.rectangle_18),
             contentDescription = "bg",
