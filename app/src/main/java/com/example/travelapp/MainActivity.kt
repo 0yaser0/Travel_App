@@ -18,21 +18,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TravelAppTheme {
-                //TravelAppScaffold()
+                TravelAppScaffold()
             }
         }
     }
 }
 
-//@Composable
-//fun TravelAppScaffold() {
-//    val navController = rememberNavController()
-//
-//    Scaffold(
-//        topBar = { TravelAppBar() },
-//        bottomBar = { TravelAppBottomBar(navController) },
-//        content = { innerPadding ->
-//            MainContent(modifier = Modifier.padding(innerPadding).fillMaxSize())
-//        }
-//    )
-//}
+@Composable
+fun TravelAppScaffold() {
+    val navController = rememberNavController()
+
+    Scaffold(
+        topBar = { TravelAppBar() },
+        bottomBar = { TravelAppBottomBar() },
+        content = { innerPadding ->
+            MainContent(modifier = Modifier.padding(innerPadding).fillMaxSize())
+        }
+    )
+}
