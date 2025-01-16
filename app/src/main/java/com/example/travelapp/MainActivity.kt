@@ -27,6 +27,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
@@ -101,8 +102,8 @@ fun TravelAppTopBar() {
 fun FlightBookingScreen(modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }
     var selectedDate by remember { mutableStateOf("") }
-    var adultCount by remember { mutableStateOf(1) }
-    var childCount by remember { mutableStateOf(0) }
+    var adultCount by remember { mutableIntStateOf(1) }
+    var childCount by remember { mutableIntStateOf(0) }
 
     val items = listOf(
         NavigationItem(R.drawable.places, "Places"),
@@ -359,32 +360,43 @@ fun BookingForm(
                 modifier = Modifier.padding(top = 16.dp)
             )
 
-//            Row {
-//                OutlinedTextField(
-//                    value = selectedDate,
-//                    onValueChange = { },
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding(vertical = 8.dp)
-//                        .clickable { showDatePickerDialog = true },
-//                    placeholder = { Text("Select Date") },
-//                    readOnly = true,
-//
-//                    keyboardOptions = KeyboardOptions.Default.copy(
-//                        keyboardType = KeyboardType.Decimal
-//                    ),
-//                    colors = OutlinedTextFieldDefaults.colors(
-//                        unfocusedBorderColor = Color(0xFFE8E8E8),
-//                        focusedBorderColor = Color(0xFF5669FF)
-//                    ),
-//                    shape = RoundedCornerShape(8.dp)
-//                )
-//                Icon(
-//                    painter = painterResource(id = R.drawable.calendar),
-//                    contentDescription = "Calendar",
-//                    tint = Color(0xFF5669FF))
-//            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                OutlinedTextField(
+                    value = selectedDate,
+                    onValueChange = {},
+                    placeholder = { Text("Select Date") },
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(55.dp),
+                    shape = RoundedCornerShape(8.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        unfocusedBorderColor = Color(0xFFE8E8E8),
+                        focusedBorderColor = Color(0xFF5669FF)
+                    )
+                )
 
+                FilledIconButton(
+                    onClick = { },
+                    modifier = Modifier
+                        .padding(start = 10.dp)
+                        .wrapContentSize(),
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = Color(0xFF5669FF)
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.date),
+                        contentDescription = "Filter",
+                        tint = Color.White,
+                        modifier = Modifier.size(25.dp)
+                    )
+                }
+            }
 
             Row(
                 modifier = Modifier
@@ -396,14 +408,14 @@ fun BookingForm(
                     label = "Adult (12+)",
                     count = adultCount,
                     onCountChange = onAdultCountChange,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(0.3f)
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 PassengerCounter(
                     label = "Child (2-12)",
                     count = childCount,
                     onCountChange = onChildCountChange,
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(0.3f)
                 )
             }
 
@@ -474,17 +486,19 @@ fun PassengerCounter(
                 onClick = { if (count > 0) onCountChange(count - 1) },
                 modifier = Modifier
                     .size(32.dp)
+                    .shadow(4.dp, RoundedCornerShape(8.dp))
                     .background(Color(0xFFFFFFFF), RoundedCornerShape(8.dp))
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.minus),
                     contentDescription = "Decrease",
-                    tint = Color.White,
-                    modifier = Modifier.size(16.dp)
+                    tint = Color.Black,
+                    modifier = Modifier.size(20.dp)
                 )
             }
 
             Text(
+                textAlign = TextAlign.Center,
                 text = String.format("%02d", count),
                 style = MaterialTheme.typography.bodyLarge,
                 color = Color.Black
@@ -493,13 +507,14 @@ fun PassengerCounter(
             IconButton(
                 onClick = { onCountChange(count + 1) },
                 modifier = Modifier
-                    .size(32.dp)
+                    .size(20.dp)
+                    .shadow(4.dp, RoundedCornerShape(8.dp))
                     .background(Color(0xFF5669FF), RoundedCornerShape(8.dp))
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.plus),
                     contentDescription = "Increase",
-                    tint = Color.White,
+                    tint = Color(0xFFFFFFFF),
                     modifier = Modifier.size(16.dp)
                 )
             }
@@ -548,7 +563,11 @@ fun NavigationCard(item: NavigationItem) {
         Card(
             modifier = Modifier
                 .size(64.dp)
-                .border(2.dp, if (item.title == "Flights") Color(0xFF5669FF) else Color.White, MaterialTheme.shapes.extraLarge),
+                .border(
+                    2.dp,
+                    if (item.title == "Flights") Color(0xFF5669FF) else Color.White,
+                    MaterialTheme.shapes.extraLarge
+                ),
             shape = MaterialTheme.shapes.extraLarge,
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
             colors = CardDefaults.cardColors(
@@ -812,7 +831,9 @@ fun LocationCard(
                     painter = painterResource(id = imageRes),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxSize().padding(16.dp)
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
                 )
             }
 
@@ -820,7 +841,8 @@ fun LocationCard(
                 modifier = Modifier.padding(12.dp)
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .fillMaxWidth()
                         .padding(vertical = 4.dp),
                     verticalAlignment = Alignment.CenterVertically
@@ -967,14 +989,6 @@ fun TravelAppBottomBar() {
 }
 
 
-@Composable
-fun FlightBookingScreenPreview() {
-    TravelAppTheme {
-        FlightBookingScreen()
-    }
-}
-
-@Preview(showBackground = true)
 @Composable
 fun SelectedDate(){
 
