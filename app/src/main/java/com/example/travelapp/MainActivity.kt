@@ -41,7 +41,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.travelapp.components.NavigationItem
-import com.example.travelapp.hamza.FlightTicketScreen
 import com.example.travelapp.ui.theme.TravelAppTheme
 import java.util.Calendar
 
@@ -136,25 +135,25 @@ fun FlightBookingScreen(modifier: Modifier = Modifier) {
             )
             Spacer(modifier = Modifier.height(24.dp))
 
-            SectionHeader(title = "Best offers", onSeeAll = {})
+            SectionHeader(title = "Best offers")
 
             OffersList()
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            SectionHeader(title = "Winter Journey", onSeeAll = {})
+            SectionHeader(title = "Winter Journey")
 
             WinterJourney()
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            SectionHeader(title = "Popular Location", onSeeAll = {})
+            SectionHeader(title = "Popular Location")
 
             PopularLocations()
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            SectionHeader(title = "My Achievements", onSeeAll = {})
+            SectionHeader(title = "My Achievements")
 
             BtnJournies()
 
@@ -223,13 +222,13 @@ fun BookingForm(
     onAdultCountChange: (Int) -> Unit = {},
     onChildCountChange: (Int) -> Unit = {}
 ) {
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by remember { mutableIntStateOf(0) }
     val tabs = listOf("One Way", "Round Trip", "Multicity")
     val context = LocalContext.current
     var showDatePickerDialog by remember { mutableStateOf(false) }
 
     if (showDatePickerDialog) {
-        openDatePickerDialog(context) { date ->
+        OpenDatePickerDialog(context) { date ->
             onDateChange(date)
             showDatePickerDialog = true
         }
@@ -428,7 +427,7 @@ fun BookingForm(
 }
 
 @Composable
-fun openDatePickerDialog(context: Context, onDateSelected: (String) -> Unit) {
+fun OpenDatePickerDialog(context: Context, onDateSelected: (String) -> Unit) {
     val calendar = Calendar.getInstance()
 
     val datePickerDialog = remember {
@@ -575,7 +574,7 @@ fun NavigationCard(item: NavigationItem) {
 }
 
 @Composable
-fun SectionHeader(title: String, onSeeAll: () -> Unit) {
+fun SectionHeader(title: String) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
