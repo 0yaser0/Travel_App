@@ -21,7 +21,7 @@ The Travel App is a comprehensive platform to simplify travel planning, allowing
 ---
 
 ## 👥 Team
-- 🔹 **Yaser Yjjou **
+- 🔹 **Yaser Yjjou**
 - 🔹 **Hamza Laoutmani**
 
 ---
