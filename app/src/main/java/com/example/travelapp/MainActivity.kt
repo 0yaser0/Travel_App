@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TravelAppTopBar() {
-    FlightTicketScreen()
+//    FlightTicketScreen()
     CenterAlignedTopAppBar(
         title = { Text("") },
         navigationIcon = {
@@ -472,7 +472,7 @@ fun PassengerCounter(
                 onClick = { if (count > 0) onCountChange(count - 1) },
                 modifier = Modifier
                     .size(32.dp)
-                    .background(Color(0xFF5669FF), RoundedCornerShape(8.dp))
+                    .background(Color(0xFFFFFFFF), RoundedCornerShape(8.dp))
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.minus),

@@ -203,6 +203,11 @@ fun IndiGoLogo() {
                 fontSize = 52.sp,
                 fontWeight = FontWeight.Bold
             )
+            Icon(
+                painter = painterResource(id=R.drawable.li_chevron_left),
+                contentDescription = "Back",
+                tint = Color.White
+            )
         }
     }
 }
