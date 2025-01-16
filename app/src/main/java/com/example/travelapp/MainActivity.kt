@@ -96,7 +96,7 @@ fun TravelAppTopBar() {
     )
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun FlightBookingScreen(modifier: Modifier = Modifier) {
     var searchQuery by remember { mutableStateOf("") }
@@ -197,10 +197,11 @@ fun SearchBar(searchQuery: String, onSearchQueryChange: (String) -> Unit) {
             onClick = { },
             modifier = Modifier
                 .padding(start = 10.dp)
-                .height(48.dp),
+                .wrapContentSize(),
             colors = IconButtonDefaults.filledIconButtonColors(
                 containerColor = Color(0xFF5669FF)
-            )
+            ),
+            shape = RoundedCornerShape(8.dp)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.filter),
@@ -321,7 +322,7 @@ fun BookingForm(
                             .padding(16.dp)
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.switch_vertical),
+                            painter = painterResource(id = R.drawable.up_down_arrow),
                             contentDescription = "Switch",
                             tint = Color.White,
                             modifier = Modifier.size(24.dp)
@@ -357,31 +358,33 @@ fun BookingForm(
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier.padding(top = 16.dp)
             )
-            OutlinedTextField(
-                value = selectedDate,
-                onValueChange = { },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-                    .clickable { showDatePickerDialog = true },
-                placeholder = { Text("Select Date") },
-                readOnly = true,
-                trailingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.calendar),
-                        contentDescription = "Calendar",
-                        tint = Color(0xFF5669FF)
-                    )
-                },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Decimal
-                ),
-                colors = OutlinedTextFieldDefaults.colors(
-                    unfocusedBorderColor = Color(0xFFE8E8E8),
-                    focusedBorderColor = Color(0xFF5669FF)
-                ),
-                shape = RoundedCornerShape(8.dp)
-            )
+
+//            Row {
+//                OutlinedTextField(
+//                    value = selectedDate,
+//                    onValueChange = { },
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(vertical = 8.dp)
+//                        .clickable { showDatePickerDialog = true },
+//                    placeholder = { Text("Select Date") },
+//                    readOnly = true,
+//
+//                    keyboardOptions = KeyboardOptions.Default.copy(
+//                        keyboardType = KeyboardType.Decimal
+//                    ),
+//                    colors = OutlinedTextFieldDefaults.colors(
+//                        unfocusedBorderColor = Color(0xFFE8E8E8),
+//                        focusedBorderColor = Color(0xFF5669FF)
+//                    ),
+//                    shape = RoundedCornerShape(8.dp)
+//                )
+//                Icon(
+//                    painter = painterResource(id = R.drawable.calendar),
+//                    contentDescription = "Calendar",
+//                    tint = Color(0xFF5669FF))
+//            }
+
 
             Row(
                 modifier = Modifier
@@ -968,5 +971,56 @@ fun TravelAppBottomBar() {
 fun FlightBookingScreenPreview() {
     TravelAppTheme {
         FlightBookingScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SelectedDate(){
+
+    var showDatePickerDialog by remember { mutableStateOf(false) }
+
+    Row(
+        modifier = Modifier.padding(16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        OutlinedTextField(
+            value = "selectedDate",
+            onValueChange = { },
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .clickable { showDatePickerDialog = true },
+            placeholder = { Text("Select Date") },
+            readOnly = true,
+
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Decimal
+            ),
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color(0xFFE8E8E8),
+                focusedBorderColor = Color(0xFF5669FF)
+            ),
+            shape = RoundedCornerShape(8.dp)
+        )
+
+        FilledIconButton(
+            onClick = { },
+            modifier = Modifier
+                .padding(start = 10.dp)
+                .wrapContentSize(),
+            colors = IconButtonDefaults.filledIconButtonColors(
+                containerColor = Color(0xFF5669FF)
+            ),
+            shape = RoundedCornerShape(8.dp)
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.date),
+                contentDescription = "Filter",
+                tint = Color.White,
+                modifier = Modifier.size(25.dp)
+            )
+        }
+
     }
 }
