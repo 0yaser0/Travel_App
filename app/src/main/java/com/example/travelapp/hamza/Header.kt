@@ -197,16 +197,10 @@ fun IndiGoLogo() {
             modifier = Modifier
                 .padding(horizontal = 110.dp, vertical = 80.dp)
         ){
-            Text(
-                text = "IndiGo",
-                color = Color.White,
-                fontSize = 52.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Icon(
-                painter = painterResource(id=R.drawable.li_chevron_left),
-                contentDescription = "Back",
-                tint = Color.White
+            Image(
+                painter = painterResource(id = R.drawable.indigo_logo),
+                contentDescription = "bg",
+                modifier = Modifier.fillMaxWidth()
             )
         }
     }
