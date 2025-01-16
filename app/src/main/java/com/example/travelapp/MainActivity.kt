@@ -40,7 +40,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.travelapp.nizar.NavigationItem
+import com.example.travelapp.components.NavigationItem
 import com.example.travelapp.hamza.FlightTicketScreen
 import com.example.travelapp.ui.theme.TravelAppTheme
 import java.util.Calendar
