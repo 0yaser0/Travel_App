@@ -16,7 +16,13 @@ The Travel App is a comprehensive platform to simplify travel planning, allowing
 ---
 
 ## 🖼️ Screenshots
-![🌐 Home Screen, 🛏️ Flight Search, ✈️ Flight Details](./travelapp.png)
+<div>
+   
+<img src="https://github.com/user-attachments/assets/2d3ee61d-4e47-400f-be3f-eefcc5493c88" alt="🌐 Home Screen" width="300" height="600">
+<img src="https://github.com/user-attachments/assets/cbae00d9-187d-410b-8d8f-38efef7e5fda" alt="🛏️ Flight Search" width="300" height="600">
+<img src="https://github.com/user-attachments/assets/59a39e7f-5a61-4010-9112-a3e55c10cba0" alt="✈️ Flight Detail" width="300" height="600">
+
+</div>
 
 ---
 
