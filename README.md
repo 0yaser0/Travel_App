@@ -18,9 +18,9 @@ The Travel App is a comprehensive platform to simplify travel planning, allowing
 ## 🖼️ Screenshots
 <div>
    
-<img src="https://github.com/user-attachments/assets/2d3ee61d-4e47-400f-be3f-eefcc5493c88" alt="🌐 Home Screen" width="300" height="600">
-<img src="https://github.com/user-attachments/assets/cbae00d9-187d-410b-8d8f-38efef7e5fda" alt="🛏️ Flight Search" width="300" height="600">
-<img src="https://github.com/user-attachments/assets/6afbc0d2-ba69-4489-b50b-03409071dcc0" alt="✈️ Flight Detail" width="300" height="600">
+<img src="https://github.com/user-attachments/assets/2d3ee61d-4e47-400f-be3f-eefcc5493c88" alt="🌐 Home Screen" width="250" height="500">
+<img src="https://github.com/user-attachments/assets/cbae00d9-187d-410b-8d8f-38efef7e5fda" alt="🛏️ Flight Search" width="250" height="500">
+<img src="https://github.com/user-attachments/assets/6afbc0d2-ba69-4489-b50b-03409071dcc0" alt="✈️ Flight Detail" width="250" height="500">
 
 </div>
 
